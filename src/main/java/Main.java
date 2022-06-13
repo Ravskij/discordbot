@@ -15,5 +15,7 @@ public class Main extends ListenerAdapter {
         jdaBuilder.addEventListener(userJoinModule);
         MessageReceived messageReceived = new MessageReceived();
         jdaBuilder.addEventListener(messageReceived);
+        UserLeaveModule userLeaveModule = new UserLeaveModule();
+        jdaBuilder.addEventListener(userLeaveModule);
     }
 }

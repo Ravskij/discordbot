@@ -13,7 +13,7 @@ public class UserJoinModule extends ListenerAdapter {
         User user = event.getUser();
         List<TextChannel> channels = guild.getTextChannelsByName("общий", true);
         for (TextChannel channel : channels) {
-            channel.sendMessage("Свежий кабанчик: <@!" + user.getId() + ">").queue();
+            channel.sendMessage("Свежий кабанчик - <@!" + user.getId() + ">").queue();
         }
     }
 
