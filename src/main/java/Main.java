@@ -23,9 +23,7 @@ public class Main extends ListenerAdapter {
         if (msg.getContentRaw().equals("!ping")) {
             long time = System.currentTimeMillis();
             channel.sendMessage("Pong!") /* => RestAction<Message> */
-                    .queue(response /* => Message */ -> {
-                        response.editMessageFormat("Pong: %d ms", System.currentTimeMillis() - time).queue();
-                    });
+                    .queue(response /* => Message */ -> response.editMessageFormat("Pong: %d ms", System.currentTimeMillis() - time).queue());
         }
         if (msg.getContentRaw().equals("!гэй")) {
             channel = event.getChannel();
