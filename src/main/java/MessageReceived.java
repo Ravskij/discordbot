@@ -26,7 +26,7 @@ public class MessageReceived extends ListenerAdapter {
                 channel.sendMessage("<@!" + event.getMessage().getAuthor().getId() + "> гэй на " + (int) (Math.random() * 101.0D + 0.0D) + "%").queue();
             }
         }
-        if (msg.getContentRaw().startsWith("я")) {
+        if (msg.getContentRaw().startsWith("!дуфи")) {
             channel = event.getChannel();
             channel.sendMessage("Я всего лишь машина. Только имитация жизни. Робот сочинит симфонию? Робот превратит кусок холста в шедевр искусства?").queue();
         }
