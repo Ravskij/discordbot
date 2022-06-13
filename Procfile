@@ -1,1 +1,1 @@
-worker: java discordbot/src/main/java/Main.java
+worker: java -jar target/dsdoofy-1.0-SNAPSHOT-jar-with-dependencies.jar
