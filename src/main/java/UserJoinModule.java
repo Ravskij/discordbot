@@ -11,7 +11,7 @@ public class UserJoinModule extends ListenerAdapter {
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
         Guild guild = event.getGuild();
         User user = event.getUser();
-        List<TextChannel> channels = guild.getTextChannelsByName("test-bot-room", true);
+        List<TextChannel> channels = guild.getTextChannelsByName("общий", true);
         for (TextChannel channel : channels) {
             channel.sendMessage("Свежий кабанчик: <@!" + user.getId() + ">").queue();
         }
