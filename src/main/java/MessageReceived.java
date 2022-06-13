@@ -60,7 +60,7 @@ public class MessageReceived extends ListenerAdapter {
         if (msg.getContentRaw().startsWith("!хелп") || msg.getContentRaw().startsWith("!help")) {
             channel = event.getChannel();
             channel.sendMessage("Привет, я бот **Дуфи**. Вот несколько команд для взаимодействия со мной.\n" +
-                    "> **!дуфи** - узенать обо мне подробнее\n" +
+                    "> **!дуфи** - узнать обо мне подробнее\n" +
                     "> **!гэй** - оценить свою принадлежность к pride\n" +
                     "> **!ping** - для умных\n" +
                     "> **join** <название голосового канала> - если скучно одному\n" +
