@@ -16,4 +16,5 @@ public class UserLeaveModule extends ListenerAdapter {
             channel.sendMessage("Крысы бегут с корабля - <@!" + user.getId() + ">").queue();
         }
     }
+
 }

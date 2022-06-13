@@ -57,6 +57,17 @@ public class MessageReceived extends ListenerAdapter {
         if (msg.getContentRaw().startsWith("leave")) {
             event.getGuild().getAudioManager().closeAudioConnection();
         }
+        if (msg.getContentRaw().startsWith("!хелп") || msg.getContentRaw().startsWith("!help")) {
+            channel = event.getChannel();
+            channel.sendMessage(" Привет, я бот **Дуфи**. Вот несколько команд для взаимодействия со мной.\n" +
+                    "> ```fix\n" +
+                    "> !дуфи - узнать обо мне подробнее\n" +
+                    "> !гэй - оценить свою принадлежность к pride\n" +
+                    "> !ping - для умных\n" +
+                    "> join <имя голосового канала> - если одному скучно\n" +
+                    "> leave - ухожу в закат\n" +
+                    "> ```").queue();
+        }
     }
 
 }
