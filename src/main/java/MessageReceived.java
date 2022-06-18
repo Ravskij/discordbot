@@ -28,7 +28,7 @@ public class MessageReceived extends ListenerAdapter {
         }
         if (msg.getContentRaw().startsWith("!дуфи") || msg.getContentRaw().startsWith("!leab")) {
             channel = event.getChannel();
-            channel.sendMessage("Я всего лишь машина. Только имитация жизни. Робот сочинит симфонию? Робот превратит кусок холста в шедевр искусства?").queue();
+            channel.sendMessage("Я всего лишь машина, имитация жизни. Робот сочинит симфонию? Робот превратит кусок холста в шедевр искусства?").queue();
         }
         if (msg.getContentRaw().startsWith("join") && event.getMessage().getAuthor().getName().equals("discoyetti")) {
             channel = event.getChannel();
