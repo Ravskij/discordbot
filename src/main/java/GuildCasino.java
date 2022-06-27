@@ -9,7 +9,7 @@ public class GuildCasino {
     public void Print(MessageReceivedEvent event) {
         int recentUser = RecentUserPosition(event);
         if (recentUser < 10) {
-            event.getChannel().sendMessage("<@!" + event.getMessage().getAuthor().getId() + "> у тебя "  + nameAndScore[0][1] + "₸").queue();
+            event.getChannel().sendMessage("<@!" + event.getMessage().getAuthor().getId() + "> у тебя "  + nameAndScore[recentUser][1] + "₸").queue();
         } else {
             event.getChannel().sendMessage("<@!" + event.getMessage().getAuthor().getId() + "> у тебя нет ₸").queue();
         }
