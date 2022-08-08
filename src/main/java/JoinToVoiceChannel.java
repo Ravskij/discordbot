@@ -34,4 +34,5 @@ public class JoinToVoiceChannel extends ListenerAdapter {
             channel.sendMessage("Это где?").queue();
         }
     }
+    
 }
