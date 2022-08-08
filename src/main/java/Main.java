@@ -8,6 +8,10 @@ import javax.security.auth.login.LoginException;
 public class Main extends ListenerAdapter {
 
     public static void main(String[] args) throws LoginException {
+        System.out.println(System.getenv("TOKEN"));
+        System.out.println(System.getenv("TOKEN"));
+        System.out.println(System.getenv("TOKEN"));
+        System.out.println(System.getenv("TOKEN1"));
         JDA jdaBuilder = JDABuilder.createLight(System.getenv("TOKEN"), GatewayIntent.GUILD_MESSAGES, GatewayIntent.DIRECT_MESSAGES, GatewayIntent.GUILD_VOICE_STATES, GatewayIntent.GUILD_MEMBERS)
                 .addEventListeners(new Main())
                 .setActivity(Activity.playing("Диплом"))
