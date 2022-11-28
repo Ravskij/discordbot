@@ -32,11 +32,11 @@ public class MessageReceived extends ListenerAdapter {
         }
         if (msg.getContentRaw().startsWith("!хелп") || msg.getContentRaw().startsWith("!help")) {
             event.getChannel().sendMessage("Привет, я бот **Дуфи**. Вот несколько команд для взаимодействия со мной.\n" +
-                    "> **!дуфи** - узенать обо мне подробнее\n" +
-                    "> **!гэй** - оценить свою принадлежность к pride\n" +
+                    "> **!дуфи** - узнай обо мне подробнее\n" +
+                    "> **!гэй** - оцени свою приверженность к pride\n" +
                     "> **!ping** - для умных\n" +
-                    "> **join** <название голосового канала> - если скучно одному\n" +
-                    "> **leave** - проваливай").queue();
+                    "> **!join** <название голосового канала> - если скучно одному\n" +
+                    "> **!leave** - проваливай").queue();
         }
         if (msg.getContentRaw().startsWith("!add")) {
             guildCasino.Add(event);
