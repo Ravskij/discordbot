@@ -51,5 +51,4 @@ public class MessageReceived extends ListenerAdapter {
             guildCasino.Credit(event);
         }
     }
-
 }
