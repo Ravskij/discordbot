@@ -2,11 +2,6 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 public class MessageReceived extends ListenerAdapter {
     GuildCasino guildCasino = new GuildCasino();
     JoinToVoiceChannel joinToVoiceChannel = new JoinToVoiceChannel();
@@ -54,27 +49,6 @@ public class MessageReceived extends ListenerAdapter {
         }
         if (msg.getContentRaw().startsWith("!кредит")) {
             guildCasino.Credit(event);
-        }
-        
-        
-        if (msg.getContentRaw().startsWith("!погода")) {
-            try {
-                URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=c2640b58f3661dd81f1895959152fdfa");
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
-                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                StringBuilder response = new StringBuilder();
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    response.append(line);
-                }
-                int start = response.indexOf("\"temp\":") + "\"temp\":".length();
-                int end = response.indexOf(",", start);
-                double temp = Double.parseDouble(response.substring(start, end)) - 273.15;
-                event.getChannel().sendMessage("Температура в Минске: " + temp + "°C").queue();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }
     }
 
