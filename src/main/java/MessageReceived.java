@@ -52,3 +52,4 @@ public class MessageReceived extends ListenerAdapter {
         }
     }
 }
+
