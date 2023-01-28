@@ -50,6 +50,34 @@ public class MessageReceived extends ListenerAdapter {
         if (msg.getContentRaw().startsWith("!кредит")) {
             guildCasino.Credit(event);
         }
+        
+        
+        if (msg.getContentRaw().startsWith("!погода")) {
+            try {
+            URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=Minsk&units=metric&appid=24ad6c96d3fe32fd290b3c053c9474c4");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer content = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                content.append(inputLine);
+            }
+            in.close();
+            con.disconnect();
+
+            JSONObject json = new JSONObject(content.toString());
+            JSONObject main = json.getJSONObject("main");
+            double temp = main.getDouble("temp");
+            String roundedTemp = String.format("%.1f", temp);
+            event.getChannel().sendMessage("Temperature in Minsk: " + roundedTemp + "°C").queue();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        
     }
 
 }
