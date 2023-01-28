@@ -3,11 +3,9 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import org.json.JSONObject;
 
 public class MessageReceived extends ListenerAdapter {
     GuildCasino guildCasino = new GuildCasino();
@@ -61,25 +59,20 @@ public class MessageReceived extends ListenerAdapter {
         
         if (msg.getContentRaw().startsWith("!погода")) {
             try {
-                URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=Minsk&units=metric&appid=24ad6c96d3fe32fd290b3c053c9474c4");
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                con.setRequestMethod("GET");
-
-                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                String inputLine;
-                StringBuffer content = new StringBuffer();
-                while ((inputLine = in.readLine()) != null) {
-                    content.append(inputLine);
+                URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=c2640b58f3661dd81f1895959152fdfa");
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                StringBuilder response = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    response.append(line);
                 }
-                in.close();
-                con.disconnect();
-
-                JSONObject json = new JSONObject(content.toString());
-                JSONObject main = json.getJSONObject("main");
-                double temp = main.getDouble("temp");
-                String roundedTemp = String.format("%.1f", temp);
-                event.getChannel().sendMessage("Temperature in Minsk: " + roundedTemp + "°C").queue();
-            } catch (IOException e) {
+                int start = response.indexOf("\"temp\":") + "\"temp\":".length();
+                int end = response.indexOf(",", start);
+                double temp = Double.parseDouble(response.substring(start, end)) - 273.15;
+                event.getChannel().sendMessage("Температура в Минске: " + temp + "°C").queue();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
