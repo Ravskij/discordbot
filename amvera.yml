@@ -1,8 +1,0 @@
-meta:
-  environment: jvm
-  toolchain:
-    name: maven
-    version: 17
-
-run:
-  jarName: dsdoofy-1.0-SNAPSHOT-jar-with-dependencies.jar
