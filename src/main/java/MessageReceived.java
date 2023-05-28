@@ -3,6 +3,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class MessageReceived extends ListenerAdapter {
     GuildCasino guildCasino = new GuildCasino();
@@ -27,7 +28,7 @@ public class MessageReceived extends ListenerAdapter {
             }
         }
         if (msg.getContentRaw().startsWith("!дуфи") || msg.getContentRaw().startsWith("!leab")) {
-            event.getChannel().sendMessage("Я всего лишь машина. Только имитация жизни. " +
+            event.getChannel().sendMessage("Я всего лишь машина, только имитация жизни. " +
                     "Робот сочинит симфонию? Робот превратит кусок холста в шедевр искусства?").queue();
         }
         if (msg.getContentRaw().startsWith("!join") && event.getMessage().getAuthor().getName().equals("discoyetti")) {
@@ -43,7 +44,8 @@ public class MessageReceived extends ListenerAdapter {
                     "> **!ping** - для умных\n" +
                     "> **!join** <название голосового канала> - если скучно одному\n" +
                     "> **!leave** - проваливай\n" +
-                    "> **!курс** - курсы валют на сегодняшний день").queue();
+                    "> **!курс** - курсы валют на сегодняшний день\n" +
+                    "> **!погода** - погода в Минске (пока что)").queue();
         }
         if (msg.getContentRaw().startsWith("!add")) {
             guildCasino.Add(event);
@@ -64,6 +66,17 @@ public class MessageReceived extends ListenerAdapter {
             String[] rate = RateBYN.TakeRates();
             event.getChannel().sendMessage("Курсы валют на " + formattedDate + ":\n1 USD = " + rate[0] + " BYN" +
                     "\n1 EUR = " + rate[1] + " BYN" + "\n100 RUB = " + rate[2] + " BYN").queue();
+        }
+        if (msg.getContentRaw().startsWith("!погода")) {
+            int temp = WeatherModule.WeatherModule();
+            if (temp == -273) {
+                event.getChannel().sendMessage("Или сейчас конец света, или что-то сломалось").queue();
+            } else {
+                // Date date = new Date();
+                // String time = date.getHours() + ":" + date.getMinutes();
+                event.getChannel().sendMessage("в Минске " + temp + "℃ ").queue();
+            }
+
         }
     }
 }
